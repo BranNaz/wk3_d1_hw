@@ -7,21 +7,19 @@
 
 import re
 
-f = open("files2/regex_test.txt")
-data = f.read()
+with open("files2/regex_test.txt")as f:
+    data = f.readlines()
 
 
-pattern_name = re.compile('([A-Z][a-zA-Za-z]+) ([A-Z][A-Za-z]+)')
+pattern_name = re.compile('([A-Z][a-zA-Za-z]+) ([A-Za-z]+)')
 
-found_names = pattern_name.findall(data)
-
-for name in data.split(','):
+for name in data:
     match = pattern_name.search(name)
     if match:
         print(match.group())
+    else:
+        print(None)
         
 
-
-# print(found_names)
 
 f.close()
